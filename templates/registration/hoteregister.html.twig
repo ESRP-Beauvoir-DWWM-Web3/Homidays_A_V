@@ -115,10 +115,13 @@
     </div>
 
 
-  
+<div>
+    <label for="agreeterms">J'accepte de devenir hôte</label>   
+       {{ form_widget(registrationForm.agreeTerms,{
+       'id':'agreeterms',
+       'type': 'checkbox',}) }}
 
-       {# {{ form_row(registrationForm.agreeTerms) }}#}
-
+</div>
         <button type="submit" class="btn">S'inscrire</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

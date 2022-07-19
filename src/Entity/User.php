@@ -75,6 +75,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $phoneNumber;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $carte_identite;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $justificatifDomicile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Photo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -256,6 +271,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhoneNumber(string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getCarteIdentite(): ?string
+    {
+        return $this->carte_identite;
+    }
+
+    public function setCarteIdentite(string $carte_identite): self
+    {
+        $this->carte_identite = $carte_identite;
+
+        return $this;
+    }
+
+    public function getJustificatifDomicile(): ?string
+    {
+        return $this->justificatifDomicile;
+    }
+
+    public function setJustificatifDomicile(?string $justificatifDomicile): self
+    {
+        $this->justificatifDomicile = $justificatifDomicile;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->Photo;
+    }
+
+    public function setPhoto(?string $Photo): self
+    {
+        $this->Photo = $Photo;
 
         return $this;
     }
