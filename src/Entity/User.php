@@ -78,7 +78,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $carte_identite;
+    private $carteIdentite;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -277,12 +277,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getCarteIdentite(): ?string
     {
-        return $this->carte_identite;
+        return $this->carteIdentite;
     }
 
-    public function setCarteIdentite(string $carte_identite): self
+    public function setCarteIdentite(string $carteIdentite): self
     {
-        $this->carte_identite = $carte_identite;
+        $this->carteIdentite = $carteIdentite;
 
         return $this;
     }
