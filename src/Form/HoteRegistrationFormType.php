@@ -37,6 +37,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
                         'image/jpeg',
                         'image/png',
                         'image/svg',
+                        
                     ],
                     'mimeTypesMessage'=>'Extension de fichier invalide',
                 ])
@@ -56,6 +57,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
                      'mimeTypes'=>[
                         'file/pdf',
                         'file/word',
+                        'image/jpeg',
+                        'image/png',
+                        'image/svg',
+
                     ],
                     'mimeTypesMessage'=>'Extension de fichier invalide',
                 ])
@@ -75,6 +80,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
                     'mimeTypes'=>[
                         'file/pdf',
                         'file/word',
+                        'image/jpeg',
+                        'image/png',
+                        'image/svg',
+
                     ],
                     'mimeTypesMessage'=>'Extension de fichier invalide',
                 ])
