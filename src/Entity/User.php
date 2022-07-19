@@ -4,13 +4,11 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -40,22 +38,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Name;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $firstName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Address;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Town;
 
     /**
      * @ORM\Column(type="datetime")
@@ -65,17 +53,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $phoneNumber;
+    private $address;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $town;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $ZipCode;
+    private $zipCode;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $statut;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $phoneNumber;
 
     public function getId(): ?int
     {
@@ -168,12 +166,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name): self
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
@@ -190,30 +188,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAddress(): ?string
-    {
-        return $this->Address;
-    }
-
-    public function setAddress(string $Address): self
-    {
-        $this->Address = $Address;
-
-        return $this;
-    }
-
-    public function getTown(): ?string
-    {
-        return $this->Town;
-    }
-
-    public function setTown(string $Town): self
-    {
-        $this->Town = $Town;
-
-        return $this;
-    }
-
     public function getBirthDate(): ?\DateTimeInterface
     {
         return $this->birthDate;
@@ -226,26 +200,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoneNumber(): ?string
+    public function getAddress(): ?string
     {
-        return $this->phoneNumber;
+        return $this->address;
     }
 
-    public function setPhoneNumber(string $phoneNumber): self
+    public function setAddress(string $address): self
     {
-        $this->phoneNumber = $phoneNumber;
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getTown(): ?string
+    {
+        return $this->town;
+    }
+
+    public function setTown(string $town): self
+    {
+        $this->town = $town;
 
         return $this;
     }
 
     public function getZipCode(): ?int
     {
-        return $this->ZipCode;
+        return $this->zipCode;
     }
 
-    public function setZipCode(int $ZipCode): self
+    public function setZipCode(int $zipCode): self
     {
-        $this->ZipCode = $ZipCode;
+        $this->zipCode = $zipCode;
 
         return $this;
     }
@@ -258,6 +244,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }

@@ -3,13 +3,13 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Formumlaire d'inscription</h1>
+    <h1>Formulaire d'inscription</h1>
 
     {{ form_start(registrationForm) }}
 
     <div>
             <label for="inputName">Nom</label>
-             {{ form_widget(registrationForm.Name,{
+             {{ form_widget(registrationForm.name, {
             'attr':{
                 'class':'form-control',
                 'id':'inputName',
@@ -22,7 +22,7 @@
 
     <div>
             <label for="inputFirstName">Prénom</label>
-             {{ form_widget(registrationForm.firstName,{
+             {{ form_widget(registrationForm.firstName, {
             'attr':{
                 'class':'form-control',
                 'id':'inputFirstName',
@@ -45,9 +45,21 @@
     </div>
 
 
+
+
+<div>
+            <label for="inputphoneNumber">Numéro de téléphone :</label>
+            {{ form_widget(registrationForm.phoneNumber, {
+                'attr':{
+                    'class':'form-control',
+                    'id':'inputphoneNumber',
+                }
+            })}}
+        </div> 
+
     <div>
             <label for="inputAddress">Adresse Postale</label>
-             {{ form_widget(registrationForm.Address,{
+             {{ form_widget(registrationForm.address,{
             'attr':{
                 'class':'form-control',
                 'id':'inputAddress',
@@ -59,7 +71,7 @@
 
     <div>
             <label for="inputTown">Ville :</label>
-            {{ form_widget(registrationForm.Town, {
+            {{ form_widget(registrationForm.town, {
                 'attr':{
                     'class':'form-control',
                     'id':'inputTown',
@@ -91,8 +103,8 @@
     </div>
 
 
-  <div>
-            <label for="inputpassword">Votre Mot de passe</label>
+<div>
+            <label for="inputpassword"></label>
              {{ form_widget(registrationForm.plainPassword,{
             'attr':{
                 'class':'form-control',
@@ -103,11 +115,9 @@
     </div>
 
 
-       {#  {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }} 
-        {{ form_row(registrationForm.agreeTerms) }}#}
+  
+
+       {# {{ form_row(registrationForm.agreeTerms) }}#}
 
         <button type="submit" class="btn">S'inscrire</button>
     {{ form_end(registrationForm) }}
