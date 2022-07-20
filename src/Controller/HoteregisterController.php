@@ -18,10 +18,10 @@ class HoteregisterController extends AbstractController
      * @Route("/hoteregister", name="app_hoteregister")
      */
 
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function hoteregister(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $form = $this->createForm(hoteRegistrationFormType::class, $user);
+        $form = $this->createForm(HoteRegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,17 +44,19 @@ class HoteregisterController extends AbstractController
                 $user,
                 $authenticator,
                 $request
-            );
+            );  
+        
+            
+
         }
 
-
-   
-    // public function index(): Response
+            // public function index(): Response
     
-        return $this->render('registration/hoteregister.html.twig', [
-            'controller_name' => 'HoteregisterController',
-            'registrationForm' => $form->createView(),
-        ]);
+            return $this->render('registration/hoteregister.html.twig', [
+            //'controller_name' => 'HoteregisterController',
+             'registrationForm' => $form->createView(),
+            ]);
+         
     }
 }
  

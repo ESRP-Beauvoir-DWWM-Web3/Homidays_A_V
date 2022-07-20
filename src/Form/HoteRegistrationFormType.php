@@ -26,6 +26,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+        //->add('carteIdentite')
+        /*
         ->add('Photo', FileType::class, [
             'mapped' => false,
             'required' => false,
@@ -92,7 +94,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
                 'class'=>'form-control',
             ],
             'data_class'=>null,
-        ])    
+        ])  */ 
             ->add('name', TextType::class)
             ->add('firstName', TextType::class)
             ->add('birthDate' , DateType::class,[
