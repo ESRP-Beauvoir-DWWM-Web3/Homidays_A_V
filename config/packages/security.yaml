@@ -35,6 +35,13 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: ROLE_USER }
+      
+
+
+    role_hierarchy:
+        ROLE_VACANCIER: ROLE_USER
+        ROLE_HOTE: ROLE_USER
+        ROLE_ADMIN: ROLE_USER
 
 
 when@test:

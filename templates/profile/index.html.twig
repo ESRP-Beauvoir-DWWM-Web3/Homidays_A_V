@@ -33,21 +33,29 @@
 </div>
 
 
-{% if is_granted('ROLE_VACANCIER') %}
-    {# afficher les message du vacancier #}
-
-{% endif %}
-
-
-{% if is_granted('ROLE_HOTE') %}
-    {# afficher les message du hôte #}
-
-{% endif %}
 
 
 
 <div class="messages-confirmation">
+{#contenus sont affichés uniquement si l'utilisateur a un certain rôle.#}
 <h1>Messages de confirmation</h1>
+    {% for role in user.roles %}
+        {% if role == "ROLE_VACANCIER" %}
+
+   {# afficher le message du vacancier #}
+
+    {% endif %}
+
+ 
+    {% if role == "ROLE_USER" %}
+        
+          
+        {# afficher le message du hôte #}
+
+    {% endif %}
+    {% endfor %}
+
 </div>
+
 {% endblock %}
 
