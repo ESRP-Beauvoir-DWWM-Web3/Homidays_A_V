@@ -12,19 +12,22 @@
 <p>Prénom : {{ app.user.firstname|capitalize }}</p>
 <p>Votre email : {{ app.user.email }}</p>
 <p>Votre numéro de téléphone : {{ app.user.phoneNumber }}</p>
-<p>Né(e) le : {{ app.user.birthDate|date('d/m/Y') }}
+<p>Né(e) le : 
 {% if app.user.birthDate %}
-    {% else %}
-        non-renseignée
-    {% endif %}
-</p>
+    {{ app.user.birthDate|date('d/m/Y') }}
 {% else %}
-<h1>Vous n'êtes pas connecté(e)</h1>
+    non-renseignée
 {% endif %}
+</p>
 
 <p>Votre adresse : {{ app.user.address }}</p>
 <p>Votre ville : {{ app.user.town }}</p>
 <p>Votre code postale : {{ app.user.zipCode }}</p>
+
+{% else %}
+<h1>Vous n'êtes pas connecté(e)</h1>
+{% endif %}
+
 </div> 
 
 <div>
@@ -39,23 +42,18 @@
 <div class="messages-confirmation">
 {#contenus sont affichés uniquement si l'utilisateur a un certain rôle.#}
 <h1>Messages de confirmation</h1>
-    {% for role in user.roles %}
-        {% if role == "ROLE_VACANCIER" %}
+    
+{% if is_granted('ROLE_VACANCIER') %}
 
-   {# afficher le message du vacancier #}
-
-    {% endif %}
-
+<p>Merci van</p> 
  
-    {% if role == "ROLE_USER" %}
-        
-          
-        {# afficher le message du hôte #}
-
-    {% endif %}
-    {% endfor %}
+   
+    {% elseif is_granted('ROLE_HOTE') %}
+    <p>Non van</p>  
+{% endif %}
 
 </div>
 
 {% endblock %}
+
 
