@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+{% if app.user %}
+
+<h6>Bienvenue sur votre profil, {{ app.user.firstname|capitalize }} {{ app.user.name|capitalize }}</h6>
+
+<div class ="info-profile">
+<p>Nom : {{ app.user.name|capitalize }}</p>
+<p>Prénom : {{ app.user.firstname|capitalize }}</p>
+<p>Votre email : {{ app.user.email }}</p>
+<p>Votre numéro de téléphone : {{ app.user.phoneNumber }}</p>
+<p>Né(e) le : {{ app.user.birthDate|date('d/m/Y') }}
+{% if app.user.birthDate %}
+    {% else %}
+        non-renseignée
+    {% endif %}
+</p>
+{% else %}
+<h1>Vous n'êtes pas connecté(e)</h1>
+{% endif %}
+
+<p>Votre adresse : {{ app.user.address }}</p>
+<p>Votre ville : {{ app.user.town }}</p>
+<p>Votre code postale : {{ app.user.zipCode }}</p>
+</div> 
+
+<div>
+       <button type="submit" class="btn">Modifier</button>
+        <button type="submit" class="btn">Valider</button>
+</div>
+
+<div class="messages-confirmation">
+<h1>Messages de confirmation</h1>
+</div>
+{% endblock %}
+

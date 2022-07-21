@@ -82,6 +82,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $Photo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="user")
+     */
+    private $role;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -275,6 +280,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhoto(?string $Photo): self
     {
         $this->Photo = $Photo;
+
+        return $this;
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }
