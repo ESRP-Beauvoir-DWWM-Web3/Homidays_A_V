@@ -1,0 +1,32 @@
+
+
+
+/*------------------------------- Formulaire d'inscription----------------------------------*/
+form{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 40%;
+    margin-left: 40em;
+    padding:1.5em;
+    column-gap: 20%;
+       
+}
+ h1{
+    text-align: center;
+    margin-top:2em;
+    padding-bottom:2em;
+    color: cornflowerblue;
+}
+
+.btn{
+    margin-top:5em;
+    margin-left:10em;
+    background-color: cornflowerblue;
+    padding-left:3em;
+    padding-right:3em;
+    text-align: center;
+    color:white;
+}
+
+/*------------------------------------------------------------------------------------------------*/

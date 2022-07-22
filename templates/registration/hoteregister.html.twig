@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Devenez Hôte</h1>
+
+    {{ form_start(registrationForm) }}
+<div>{#
+            <label for="Photo">Ajouter une photo de profil :</label>
+             {{ form_widget(registrationForm.Photo,{
+            'attr':{
+                'class':'form-control',
+                'id':'Photo',
+                'type':'file',
+                    }
+             } )}}
+    </div>
+<div>
+            <label for="carteIdentite">Ajouter votre pièce d'identité :</label>
+             {{ form_widget(registrationForm.carteIdentite,{
+            'attr':{
+                'class':'form-control',
+                'id':'carteIdentite',
+                'type':'file',
+                    }
+             } )}}
+    </div>#}{#}
+<div>
+            <label for="justificatifDomicile">Ajouter un justicatif de domicile :</label>
+             {{ form_widget(registrationForm.justificatifDomicile,{
+            'attr':{
+                'class':'form-control',
+                'id':'justificatifDomicile',
+                'type':'file',
+                    }
+             } )}}
+    </div>
+
+    <div>#}
+            <label for="inputName">Nom</label>
+             {{ form_widget(registrationForm.name, {
+            'attr':{
+                'class':'form-control',
+                'id':'inputName',
+                'type':'text',
+                    }
+             } )}}
+    </div>
+
+
+
+    <div>
+            <label for="inputFirstName">Prénom</label>
+             {{ form_widget(registrationForm.firstName, {
+            'attr':{
+                'class':'form-control',
+                'id':'inputFirstName',
+                'type':'text',
+                    }
+             } )}}
+    </div>
+
+
+
+    <div>
+            <label for="inputBirthDate">Date de naissance</label>
+             {{ form_widget(registrationForm.birthDate,{
+            'attr':{
+                'class':'form-control',
+                'id':'inputDate',
+                'type':'date',
+                    }
+             } )}}
+    </div>
+
+
+
+
+<div>
+            <label for="inputphoneNumber">Numéro de téléphone :</label>
+            {{ form_widget(registrationForm.phoneNumber, {
+                'attr':{
+                    'class':'form-control',
+                    'id':'inputphoneNumber',
+                }
+            })}}
+        </div> 
+
+    <div>
+            <label for="inputAddress">Adresse Postale</label>
+             {{ form_widget(registrationForm.address,{
+            'attr':{
+                'class':'form-control',
+                'id':'inputAddress',
+    
+                    }
+             } )}}
+    </div>
+
+
+    <div>
+            <label for="inputTown">Ville :</label>
+            {{ form_widget(registrationForm.town, {
+                'attr':{
+                    'class':'form-control',
+                    'id':'inputTown',
+                }
+            })}}
+    </div> 
+
+
+       <div>
+            <label for="inputZipCode">Code postal :</label>
+            {{ form_widget(registrationForm.zipCode, {
+                'attr':{
+                    'class':'form-control',
+                    'id':'inputZipCode',
+                }
+            })}}
+        </div>  
+
+
+    <div>
+            <label for="inputEmail">Votre email</label>
+             {{ form_widget(registrationForm.email,{
+            'attr':{
+                'class':'form-control',
+                'id':'inputEmail',
+                'type':'email',
+                    }
+             } )}}
+    </div>
+
+
+<div>
+            <label for="inputpassword"></label>
+             {{ form_widget(registrationForm.plainPassword,{
+            'attr':{
+                'class':'form-control',
+                'id':'inputpassword',
+                'type':'password',
+                    }
+             } )}}
+    </div>
+
+
+<a href="{{ path('app_agreeterms') }}" >Les conditions générales d'utilisation</a>
+
+<div>
+    <label for="agreeterms">J'accepte de devenir hôte</label>   
+       {{ form_widget(registrationForm.agreeTerms,{
+       'id':'agreeterms',
+       'type': 'checkbox',}) }}
+
+</div>
+        <button type="submit" class="btn">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
