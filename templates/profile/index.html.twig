@@ -5,51 +5,46 @@
 {% block body %}
 {% if app.user %}
 
-<h6>Bienvenue sur votre profil, {{ app.user.firstname|capitalize }} {{ app.user.name|capitalize }}</h6>
+    <h6>Bienvenue sur votre profil, {{ app.user.firstname|capitalize }} {{ app.user.name|capitalize }}</h6>
 
-<div class ="info-profile">
-<p>Nom : {{ app.user.name|capitalize }}</p>
-<p>Prénom : {{ app.user.firstname|capitalize }}</p>
-<p>Votre email : {{ app.user.email }}</p>
-<p>Votre numéro de téléphone : {{ app.user.phoneNumber }}</p>
-<p>Né(e) le : 
-{% if app.user.birthDate %}
-    {{ app.user.birthDate|date('d/m/Y') }}
-{% else %}
-    non-renseignée
-{% endif %}
-</p>
+    <div class ="info-profile">
+    <p>Nom : {{ app.user.name|capitalize }}</p>
+    <p>Prénom : {{ app.user.firstname|capitalize }}</p>
+    <p>Votre email : {{ app.user.email }}</p>
+    <p>Votre numéro de téléphone : {{ app.user.phoneNumber }}</p>
+    <p>Né(e) le : 
+    {% if app.user.birthDate %}
+        {{ app.user.birthDate|date('d/m/Y') }}
+    {% else %}
+        non-renseignée
+    {% endif %}
+    </p>
 
-<p>Votre adresse : {{ app.user.address }}</p>
-<p>Votre ville : {{ app.user.town }}</p>
-<p>Votre code postale : {{ app.user.zipCode }}</p>
+    <p>Votre adresse : {{ app.user.address }}</p>
+    <p>Votre ville : {{ app.user.town }}</p>
+    <p>Votre code postale : {{ app.user.zipCode }}</p>
 
-{% else %}
-<h1>Vous n'êtes pas connecté(e)</h1>
-{% endif %}
 
-</div> 
+    </div> 
 
-<div>
-       <button type="submit" class="btn">Modifier</button>
+    <div>
+        <button type="submit" class="btn">Modifier</button>
         <button type="submit" class="btn">Valider</button>
-</div>
+    </div>
 
+    <div class="messages-confirmation">
+        {#contenus sont affichés uniquement si l'utilisateur a un certain rôle.#}
+        <h1>Messages de confirmation</h1>
+            
+        {% if is_granted('ROLE_VACANCIER') %}
+            <p>Merci van</p> 
+        {% elseif is_granted('ROLE_HOTE') %}
+            <p>Non van</p>  
+        {% endif %}
+    </div>
 
-
-
-
-<div class="messages-confirmation">
-{#contenus sont affichés uniquement si l'utilisateur a un certain rôle.#}
-<h1>Messages de confirmation</h1>
-    
-{% if is_granted('ROLE_VACANCIER') %}
-
-<p>Merci van</p> 
- 
-   
-    {% elseif is_granted('ROLE_HOTE') %}
-    <p>Non van</p>  
+{% else %}
+    <h1>Vous n'êtes pas connecté(e)</h1>
 {% endif %}
 
 </div>

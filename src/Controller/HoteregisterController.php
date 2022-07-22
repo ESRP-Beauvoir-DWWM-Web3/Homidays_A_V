@@ -33,7 +33,7 @@ class HoteregisterController extends AbstractController
                 )
             );
 
-            $user->setRoles(['ROLES_HOTE']);
+            $user->setRoles(['ROLE_HOTE']);
             $user->setStatut(False);
 
             $entityManager->persist($user);

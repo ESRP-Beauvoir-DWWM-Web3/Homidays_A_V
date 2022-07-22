@@ -34,7 +34,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
- $user->setRoles(['ROLES_VACANCIER']);
+ $user->setRoles(['ROLE_VACANCIER']);
  $user->setStatut(False);
 
             $entityManager->persist($user);
