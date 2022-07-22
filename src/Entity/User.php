@@ -80,12 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Photo;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="user")
-     */
-    private $role;
+    private $photo;
 
     public function getId(): ?int
     {
@@ -274,24 +269,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getPhoto(): ?string
     {
-        return $this->Photo;
+        return $this->photo;
     }
 
-    public function setPhoto(?string $Photo): self
+    public function setPhoto(?string $photo): self
     {
-        $this->Photo = $Photo;
-
-        return $this;
-    }
-
-    public function getRole(): ?Role
-    {
-        return $this->role;
-    }
-
-    public function setRole(?Role $role): self
-    {
-        $this->role = $role;
+        $this->photo = $photo;
 
         return $this;
     }
