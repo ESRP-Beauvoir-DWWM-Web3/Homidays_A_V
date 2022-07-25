@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce{% endblock %}
+
+{% block body %}
+    <h1>Annonce</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ annonce.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ annonce.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ annonce.description }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ annonce.localisation }}</td>
+            </tr>
+            <tr>
+                <th>Resume</th>
+                <td>{{ annonce.resume }}</td>
+            </tr>
+            <tr>
+                <th>PublishedDate</th>
+                <td>{{ annonce.publishedDate ? annonce.publishedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ModificationDate</th>
+                <td>{{ annonce.modificationDate ? annonce.modificationDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PeriodDate</th>
+                <td>{{ annonce.periodDate ? annonce.periodDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ annonce.price }}</td>
+            </tr>
+            <tr>
+                <th>RoomNumber</th>
+                <td>{{ annonce.roomNumber }}</td>
+            </tr>
+            <tr>
+                <th>BedNumber</th>
+                <td>{{ annonce.bedNumber }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>{{ annonce.picture }}</td>
+            </tr>
+            <tr>
+                <th>PersonNumber</th>
+                <td>{{ annonce.personNumber }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ annonce.statut ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_annonce_index') }}">back to list</a>
+
+    <a href="{{ path('app_annonce_edit', {'id': annonce.id}) }}">edit</a>
+
+    {{ include('annonce/_delete_form.html.twig') }}
+{% endblock %}
