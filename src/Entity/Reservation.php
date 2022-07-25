@@ -42,6 +42,11 @@ class Reservation
      */
     private $statut;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Annonce::class, mappedBy="reservations", cascade={"persist", "remove"})
+     */
+    private $annonce;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,28 @@ class Reservation
     public function setStatut(?bool $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getAnnonce(): ?Annonce
+    {
+        return $this->annonce;
+    }
+
+    public function setAnnonce(?Annonce $annonce): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($annonce === null && $this->annonce !== null) {
+            $this->annonce->setReservations(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($annonce !== null && $annonce->getReservations() !== $this) {
+            $annonce->setReservations($this);
+        }
+
+        $this->annonce = $annonce;
 
         return $this;
     }

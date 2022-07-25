@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnnonceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -81,6 +83,42 @@ class Annonce
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $statut;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="annonces")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Reservation::class, inversedBy="annonce", cascade={"persist", "remove"})
+     */
+    private $reservations;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Equipment::class, inversedBy="annonces")
+     */
+    private $equipments;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Comments::class, cascade={"persist", "remove"})
+     */
+    private $comments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="annonces")
+     */
+    private $categories;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Destination::class, inversedBy="annonces")
+     */
+    private $destinations;
+
+    public function __construct()
+    {
+        $this->equipments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -239,6 +277,90 @@ class Annonce
     public function setStatut(?bool $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getReservations(): ?Reservation
+    {
+        return $this->reservations;
+    }
+
+    public function setReservations(?Reservation $reservations): self
+    {
+        $this->reservations = $reservations;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Equipment>
+     */
+    public function getEquipments(): Collection
+    {
+        return $this->equipments;
+    }
+
+    public function addEquipment(Equipment $equipment): self
+    {
+        if (!$this->equipments->contains($equipment)) {
+            $this->equipments[] = $equipment;
+        }
+
+        return $this;
+    }
+
+    public function removeEquipment(Equipment $equipment): self
+    {
+        $this->equipments->removeElement($equipment);
+
+        return $this;
+    }
+
+    public function getComments(): ?Comments
+    {
+        return $this->comments;
+    }
+
+    public function setComments(?Comments $comments): self
+    {
+        $this->comments = $comments;
+
+        return $this;
+    }
+
+    public function getCategories(): ?Category
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Category $categories): self
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    public function getDestinations(): ?Destination
+    {
+        return $this->destinations;
+    }
+
+    public function setDestinations(?Destination $destinations): self
+    {
+        $this->destinations = $destinations;
 
         return $this;
     }
