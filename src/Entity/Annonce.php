@@ -115,6 +115,11 @@ class Annonce
      */
     private $destinations;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $town;
+
     public function __construct()
     {
         $this->equipments = new ArrayCollection();
@@ -361,6 +366,18 @@ class Annonce
     public function setDestinations(?Destination $destinations): self
     {
         $this->destinations = $destinations;
+
+        return $this;
+    }
+
+    public function getTown(): ?string
+    {
+        return $this->town;
+    }
+
+    public function setTown(string $town): self
+    {
+        $this->town = $town;
 
         return $this;
     }
