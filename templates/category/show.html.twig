@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category{% endblock %}
+{% block title %}{{ category.title }}{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
+    <h1>{{ category.title }}</h1>
+    {% if category is defined %}
+        {% set entity = category %}
+        {% set name = 'category' %}
+
 
     <table class="table">
         <tbody>
@@ -12,12 +16,12 @@
                 <td>{{ category.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ category.title }}</td>
             </tr>
             <tr>
                 <th>Statut</th>
-                <td>{{ category.statut ? 'Yes' : 'No' }}</td>
+                <td>{{ category.statut ? 'Active' : 'Désactivé' }}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -26,9 +30,54 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_category_index') }}">back to list</a>
+        {% elseif annonce is defined %}
+            {% set entity = annonce%}
+            {% set name = 'annonce' %}
 
-    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+        <h1>Annonce</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ annonce.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ annonce.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ annonce.description }}</td>
+            </tr>
+            <th>Contenu</th>
+                <td>{{ annonce.content }}</td>
+            </tr>
+            <tr>
+                <th>Date de publication</th>
+                <td>{{ annonce.publishedDate ? annonce.publishedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image d'illustration</th>
+                <td><img src="{{ asset(annonce.picture) }}" alt="" width="100"></td>
+            </tr>
+            <tr>
+                <th>Résumé</th>
+                <td>{{ post.excerpt }}</td>
+            </tr>
+        </tbody>
+        </tbody>
+    </table>
+
+
+
+
+
+    {% endif %}
+
+    <a href="{{ path('app_category_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('app_category_edit', {'id': category.id}) }}">Éditer</a>
 
     {{ include('category/_delete_form.html.twig') }}
 {% endblock %}
