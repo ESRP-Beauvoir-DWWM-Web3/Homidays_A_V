@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une annonce{% endblock %}
 
+
+{% if annonce is defined %}
+        {% set title, name = 'annonce', 'annonce' %}
+
+{% endif %}
 {% block body %}
-    <h1>Ajouter une nouvelle annonce</h1>
+ {% block title %}Ajouter une {{  title }}{% endblock %}   
+
+
 
     {{ include('annonce/_form.html.twig') }}
 

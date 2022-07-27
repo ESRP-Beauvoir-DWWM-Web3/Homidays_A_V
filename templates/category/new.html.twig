@@ -4,17 +4,11 @@
 {% block title %}Nouvelle catégorie{% endblock %}
 
 {% block body %}
-    <h1>Créer une catégorie</h1>
-
+    
  {% if category is defined %}
         {% set title, name = 'Catégorie', 'category' %}
 {% endif %}
 
-    {% block title %}Créer {{ title }}{% endblock %}
-
-
-
-{% block body %}
     <h1>Créer {{ title }}</h1>
 
 

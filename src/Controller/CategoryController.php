@@ -16,6 +16,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class CategoryController extends AbstractController
 {
+
+
+
+    
     /**
      * @Route("/", name="app_category_index", methods={"GET"})
      */
@@ -76,6 +80,7 @@ class CategoryController extends AbstractController
             'form' => $form,
         ]);
     }
+
 
     /**
      * @Route("/{id}", name="app_category_delete", methods={"POST"})

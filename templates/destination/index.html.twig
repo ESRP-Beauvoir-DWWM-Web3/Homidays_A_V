@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Destination index{% endblock %}
+{% block title %} Les destinations {% endblock %}
 
 {% block body %}
-    <h1>Destination index</h1>
+
+    {% if destinations is defined %}
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
+                <th>Titre</th>
+                <th>Description</th> 
                 <th>Statut</th>
-                <th>Description</th>
-                <th>actions</th>
+               <th>Actions</th> 
+              
             </tr>
         </thead>
         <tbody>
@@ -20,20 +22,29 @@
             <tr>
                 <td>{{ destination.id }}</td>
                 <td>{{ destination.title }}</td>
-                <td>{{ destination.statut ? 'Yes' : 'No' }}</td>
                 <td>{{ destination.description }}</td>
+                <td>{{ destination.statut ? 'Activé' : 'Désactivé' }}</td>
                 <td>
-                    <a href="{{ path('app_destination_show', {'id': destination.id}) }}">show</a>
-                    <a href="{{ path('app_destination_edit', {'id': destination.id}) }}">edit</a>
+                    <a href="{{ path('app_destination_show', {'id': destination.id}) }}">Voir</a>
+                    <a href="{{ path('app_destination_edit', {'id': destination.id}) }}">Éditer</a>
                 </td>
-            </tr>
-        {% else %}
+            </tr>  
+            
+    
+        {% else %} 
+        
+      
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
+        
+       
         </tbody>
     </table>
 
-    <a href="{{ path('app_destination_new') }}">Create new</a>
+    <a href="{{ path('app_destination_new') }}">Ajouter une nouvelle destination</a>
+
+    {% endif %} 
+
 {% endblock %}

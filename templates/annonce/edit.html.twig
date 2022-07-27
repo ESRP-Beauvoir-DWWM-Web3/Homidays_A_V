@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Annonce{% endblock %}
+
+  {% if category is defined %}
+        {% set title, name = 'annonce', 'annonce' %}
+
+ {% endif %}
+
+{% block title %}Mise à jour {{ title }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Annonce</h1>
+    <h1> Mise à jour  {{ title }}</h1>
 
-    {{ include('annonce/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('annonce/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
     <a href="{{ path('app_annonce_index') }}">Retour à la liste</a>
 

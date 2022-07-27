@@ -33,11 +33,7 @@
                 <th>Description</th>
                 <td>{{ category.description }}</td>
             </tr>
-            <tr>
-                <th>Statut</th>
-                <td>{{ category.statut ? 'Activé' : 'Désactivé' }}</td>
-            </tr>
-        
+           
         </tbody>
     </table>
 
@@ -83,7 +79,6 @@
 
     {% endif %}
 
-    <a href="{{ path('app_category_index') }}">Retour à la liste</a>
 
 
     <a href="{{ path('app_category_index') }}">Retour à la liste</a>

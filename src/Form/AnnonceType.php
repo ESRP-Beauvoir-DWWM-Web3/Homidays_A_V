@@ -30,30 +30,36 @@ class AnnonceType extends AbstractType
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Titre'
             ])
             
             ->add('picture', TextType::class,[
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Images'
             ])
 
             ->add('description', TextareaType::class,[
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Description'
             ])
             
             ->add('resume', TextareaType::class,[
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Résumé'
             ])
             
             ->add('town', TextType::class,[
                 'attr'=>[
                     'class'=>'form-control',
+                
                 ],
+                'label'=>'Ville'
             ])
 
             ->add('localisation', ChoiceType::class,[
@@ -65,6 +71,7 @@ class AnnonceType extends AbstractType
                 ],
                 // pour faire une liste
                 'expanded'=>'false',
+                'label'=>'Localisation',
                 'choice_attr'=>[
                     'Périphérie éloignée'=>['class'=>'me-1'],
                     'Périphérie'=>['class'=>'me-1 ms-5'],
@@ -78,6 +85,7 @@ class AnnonceType extends AbstractType
 
              ->add('destinations',EntityType::class,[
                 'class'=> Destination::class,
+                'label'=>'Destination',
                 'choice_label'=>'title',
                 'expanded'=>true,
                 'mapped'=> false,
@@ -98,15 +106,16 @@ class AnnonceType extends AbstractType
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Type de biens'
             ])
-            /* ->add('publishedDate', DateType::class,[
+           /* ->add('publishedDate', DateType::class,[
                 'widget' => 'choice',
-                'years' => range(date('Y')-100,date('Y')-20),
+                'years' => range(date('Y'),date('Y')),
                 'attr'=>[
                     'class'=>'form-control',
                 ],
             ])
-            ->add('modificationDate', DateType::class,[
+             ->add('modificationDate', DateType::class,[
                 'widget' => 'choice',
                 'years' => range(date('Y')-100,date('Y')-20),
                 'attr'=>[
@@ -120,28 +129,35 @@ class AnnonceType extends AbstractType
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Date de réservation'
             ])
-            ->add('price', IntegerType::class,[
+            ->add('price', TextType::class,[
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Prix'
             ])
             ->add('roomNumber', IntegerType::class,[
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Nombre de chambres'
             ])
             ->add('bedNumber', IntegerType::class,[
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Nombre de lits'
             ])
             
             ->add('personNumber', IntegerType::class,[
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Nombre de personnes'
             ])
+           
+            
             
             
             /* ->add('reservations',EntityType::class,[
@@ -161,6 +177,7 @@ class AnnonceType extends AbstractType
                 'attr'=>[
                     'class'=>'form-control',
                 ], 
+                'label'=>'Équipements proposés'
             ])
 /*  */
             ->add('author',EntityType::class,[
@@ -169,6 +186,7 @@ class AnnonceType extends AbstractType
                 'attr'=>[
                     'class'=>'form-control',
                 ],
+                'label'=>'Annonce publiée par'
             ])
             ->add('statut',ChoiceType::class,[
                 'choices'=>[

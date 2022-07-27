@@ -3,8 +3,11 @@
 {% block title %}Destination{% endblock %}
 
 {% block body %}
-    <h1>Destination</h1>
 
+{% if destination is defined %}
+    {% set entity = destination %}
+    {% set name = 'destination' %}
+    
     <table class="table">
         <tbody>
             <tr>
@@ -12,23 +15,26 @@
                 <td>{{ destination.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ destination.title }}</td>
-            </tr>
-            <tr>
-                <th>Statut</th>
-                <td>{{ destination.statut ? 'Yes' : 'No' }}</td>
-            </tr>
+            </tr> 
+            
             <tr>
                 <th>Description</th>
                 <td>{{ destination.description }}</td>
             </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ destination.statut ? 'Activé' : 'Désactivé' }}</td>
+            </tr>
+           
         </tbody>
     </table>
 
-    <a href="{{ path('app_destination_index') }}">back to list</a>
+{% endif %}
+    <a href="{{ path('app_destination_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_destination_edit', {'id': destination.id}) }}">edit</a>
+    <a href="{{ path('app_destination_edit', {'id': destination.id}) }}">Éditer</a>
 
     {{ include('destination/_delete_form.html.twig') }}
 {% endblock %}
