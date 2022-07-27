@@ -5,7 +5,19 @@
 {% block body %}
     <h1>Éditer catégorie</h1>
 
-    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% if category is defined %}
+        {% set title, name = 'Catégorie', 'category' %}
+
+{% endif %}
+
+{% block title %}Mise à jour {{ title  }}{% endblock %}
+
+{% block body %}
+    <h1>Mise à jour {{ title  }}</h1>
+
+
+    {{ include('category/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
     <a href="{{ path('app_category_index') }}">Retour à la liste</a>
 

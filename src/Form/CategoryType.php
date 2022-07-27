@@ -16,6 +16,7 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
             ->add('title', TextType::class, [
                 'attr'=> [
                     'class'=>'form-control',
@@ -30,7 +31,25 @@ class CategoryType extends AbstractType
             ->add('description', TextType::class, [
 
             ])
-        ;
+        
+        ->add('title', TextType::class, [
+            'attr'=> [
+                'class'=>'form-control',
+            ],
+        ])
+        
+        ->add('description', TextType::class, [
+
+        ])
+        
+        ->add('statut', ChoiceType::class, [
+            'choices'=>[
+                'Activé'=>'activé',
+                'Désactivé'=>'désactivé'
+            ]
+        ])
+    ; 
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

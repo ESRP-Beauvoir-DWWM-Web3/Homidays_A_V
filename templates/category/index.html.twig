@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Catégories{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+    {% if categories is defined %}  
+    <h1>Les catégories</h1>
 
     <table class="table">
         <thead>
@@ -12,6 +13,11 @@
                 <th>Type de bien</th>
                 <th>Description</th>
                 <th>Statut</th>
+
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Statut</th>  
+
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,11 +27,15 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.title }}</td>
                 <td>{{ category.description }}</td>
+
                 <td>{{ category.statut ? 'Active' : 'Désactivé' }}</td>
                 
+
+                <td>{{ category.statut ? 'Activé' : 'Désactivé' }}</td>
+
                 <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+                    <a href="{{ path('app_category_show', {'id': category.id}) }}">Voir</a>
+                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
@@ -36,5 +46,11 @@
         </tbody>
     </table>
 
+
     <a href="{{ path('app_category_new') }}">Ajouter une catégorie</a>
+
+    <a href="{{ path('app_category_new') }}">Ajouter une nouvelle catégorie</a>
+
+     {% endif %}
+
 {% endblock %}

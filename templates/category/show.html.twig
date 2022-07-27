@@ -18,17 +18,29 @@
             <tr>
                 <th>Titre</th>
                 <td>{{ category.title }}</td>
+
             </tr>
             <tr>
                 <th>Statut</th>
                 <td>{{ category.statut ? 'Active' : 'Désactivé' }}</td>
             </tr>
             <tr>
+
+            </tr>   
+            
+             <tr>
+
                 <th>Description</th>
                 <td>{{ category.description }}</td>
             </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ category.statut ? 'Activé' : 'Désactivé' }}</td>
+            </tr>
+        
         </tbody>
     </table>
+
 
         {% elseif annonce is defined %}
             {% set entity = annonce%}
@@ -69,13 +81,13 @@
         </tbody>
     </table>
 
-
-
-
-
     {% endif %}
 
     <a href="{{ path('app_category_index') }}">Retour à la liste</a>
+
+
+    <a href="{{ path('app_category_index') }}">Retour à la liste</a>
+
 
     <a href="{{ path('app_category_edit', {'id': category.id}) }}">Éditer</a>
 

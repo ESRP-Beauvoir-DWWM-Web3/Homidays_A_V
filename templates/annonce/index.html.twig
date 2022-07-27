@@ -1,28 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonce index{% endblock %}
+{% block title %}Les annonces{% endblock %}
 
 {% block body %}
-    <h1>Annonce index</h1>
+    <h1>Liste des annonces</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
+                <th>Titre</th>
                 <th>Description</th>
                 <th>Localisation</th>
-                <th>Resume</th>
-                <th>PublishedDate</th>
-                <th>ModificationDate</th>
-                <th>PeriodDate</th>
-                <th>Price</th>
-                <th>RoomNumber</th>
-                <th>BedNumber</th>
-                <th>Picture</th>
-                <th>PersonNumber</th>
+                <th>Resumé</th>
+                <th>Date de publication</th>
+                <th>Date de modification</th>
+                <th>Période de location</th>
+                <th>Prix</th>
+                <th>Nb de chambres</th>
+                <th>Nb de lits</th>
+                <th>Photo</th>
+                <th>Nb de personnes</th>
                 <th>Statut</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +31,7 @@
                 <td>{{ annonce.id }}</td>
                 <td>{{ annonce.title }}</td>
                 <td>{{ annonce.description }}</td>
+                <td>{{ annonce.town }}</td>
                 <td>{{ annonce.localisation }}</td>
                 <td>{{ annonce.resume }}</td>
                 <td>{{ annonce.publishedDate ? annonce.publishedDate|date('Y-m-d H:i:s') : '' }}</td>
@@ -41,10 +42,10 @@
                 <td>{{ annonce.bedNumber }}</td>
                 <td>{{ annonce.picture }}</td>
                 <td>{{ annonce.personNumber }}</td>
-                <td>{{ annonce.statut ? 'Yes' : 'No' }}</td>
+                <td>{{ annonce.statut ? 'Activé' : 'Désactivé' }}</td>
                 <td>
-                    <a href="{{ path('app_annonce_show', {'id': annonce.id}) }}">show</a>
-                    <a href="{{ path('app_annonce_edit', {'id': annonce.id}) }}">edit</a>
+                    <a href="{{ path('app_annonce_show', {'id': annonce.id}) }}">Voir</a>
+                    <a href="{{ path('app_annonce_edit', {'id': annonce.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
@@ -55,5 +56,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_annonce_new') }}">Create new</a>
+    <a href="{{ path('app_annonce_new') }}">Ajouter une nouvelle annonce</a>
 {% endblock %}
